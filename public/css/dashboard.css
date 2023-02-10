@@ -1,0 +1,66 @@
+h2 {
+  font-size: 28px;
+  padding: 20px 0;
+}
+
+.titulo {
+  font-size: 28px;
+  padding: 20px 0;
+}
+.container {
+  align-items: center
+}
+
+#dashboard-container {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  grid-template-rows: 100%;
+  align-items: center
+}
+#left-container {
+  width: 100%;
+ 
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  align-items: center
+}
+
+
+.panel .title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.panel .datum {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 32px;
+  padding: 20px 0;
+}
+.panel .description {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: bolder;
+  text-align: center;
+}
+
+#panels-container {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 20px;
+  
+}
+
+.panel {
+  border-radius: 10px;
+  padding: 10px;
+
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+
+  box-shadow: 0 10px 20px -7px rgba(0, 0, 0, 0.2);
+  border: solid 1px #eee;
+}

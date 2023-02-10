@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registro</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/login.css">
+    <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/logins.css">
     <STYLE TYPE="text/css" MEDIA=screen>
     /* Aquí se escribe el CSS */
-<!--  
+ 
   BODY  { background-image: url("views/images/fondo2.png");
           color:#FFFFFF;
           background-size: cover;
@@ -22,7 +22,7 @@
 
   h2 {border-width: 2px; border: solid; text-align: center; color:green}
  
--->
+
 </STYLE>  
     
     <style>
