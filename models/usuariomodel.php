@@ -110,27 +110,7 @@ class UsuarioModel extends Model implements IModel
             return false;
         }
     }
-   /* public function update($item)
-    {
-
-        $query = $this->db->connect()->prepare('UPDATE usuario SET codsucu = :codsucu, username = :username, password = :password, nombres = :nombres WHERE codusuario = :codusuario');
-        try {
-            $query->execute([
-                'codusuario' => $item['codusuario'],
-                'codsucu' => $item['codsucu'],
-                'username' => $item['username'],
-                'password' => $item['password'],
-
-                'nombres' => $item['nombres']
-
-            ]);
-            return true;
-        } catch (PDOException $e) {
-            echo $e;
-            return false;
-        }
-    }*/
-
+  
 
 
     function comparePasswords($current, $userid)

@@ -16,6 +16,11 @@
             "role" : "user"
         },
         {
+            "site" : "consultalaboratorio", 
+            "access" : "private", 
+            "role" : "admin"
+        },
+        {
             "site" : "agente", 
             "access" : "private", 
             "role" : "user"

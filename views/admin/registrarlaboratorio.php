@@ -10,22 +10,19 @@
 <?php include('panel.php');?>
 
     <div id="main">
-        <h1 class="center">Registrar Medicinas </h1>
+        <h1 class="center">Registrar Laboratorio </h1>
 
         <div class="center"><?php echo $this->mensaje; ?></div>
 
-        <form action="<?php echo constant('URL'); ?>consulta/registrar" method="POST">
+        <form action="<?php echo constant('URL'); ?>consultalaboratorio/registrar" method="POST">
 
             <p>
-                <label for="codMedicina">Codigo de la Medicina</label><br>
-                <input type="text" name="codMedicina"   required>
-            </p>
-            <p>
-                <label for="codLaboratorio">Codigo de Laboratorio</label><br>
+                <label for="codLaboratorio">Codigo del laboratorio</label><br>
                 <input type="text" name="codLaboratorio"   required>
             </p>
+           
             <p>
-                <label for="nombre">Nombre</label><br>
+                <label for="nombre">Nombre del laboratorio</label><br>
                 <input type="text" name="nombre"   required>
             </p>
            
