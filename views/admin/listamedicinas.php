@@ -38,8 +38,6 @@ $sucursals = $this->d['sucursals'];
                         <th data-sort="codSucursal" width="35%">Codigo de la Sucursal</th>
                         <th data-sort="nombre">Nombre</th>
                         <th data-sort="cantidad">Cantidad</th>
-                      
-                       
                         </tr>
                     </thead>
                     <tbody id="databody">

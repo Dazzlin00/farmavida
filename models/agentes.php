@@ -8,8 +8,5 @@ class Agentes
     public $password;
     public $role;
     public $nombres;
-
-
-    
 }
 ?>

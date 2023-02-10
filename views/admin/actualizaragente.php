@@ -5,51 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Farmavida</title>
 </head>
 <body>
 <?php include('panel.php');?>
 
-    <div id="main">
-        <h1 class="center">Detalle de <?php echo $this->agentes->codusuario ?></h1>
-
-        <div class="center"><?php echo $this->mensaje; ?></div>
-
+    <div id="main" class="container d-flex justify-content-center align-items-center">
+    <div>
+        <br><h2 class="center">Datos de <?php echo $this->agentes->nombres ?></h2><br>
         <form action="<?php echo constant('URL'); ?>usuario/actualizar" method="POST">
-
+        
            <p>
-            <label for="codusuario">Codigo de Usuario</label><br>
+            <label for="codusuario">Código de Usuario:</label>
                 <input type="text" name="codusuario" value="<?php echo $this->agentes->codusuario ?>" required>
             </p>
 
 
             <p>
-                <label for="codsucu">Codigo de la Sucursal</label><br>
+                <label for="codsucu">Código de la Sucursal:</label>
                 <input type="text" name="codsucu" value="<?php echo $this->agentes->codsucursal ?>" required>
             </p>
             <p>
-                <label for="username">Nombre de usuario</label><br>
+                <label for="username">Nombre de usuario:</label>
                 <input type="text" name="username"  value="<?php echo $this->agentes->username ?>" required>
             </p>
             <p>
-                <label for="password">Contrasenna</label><br>
+                <label for="password">Contraseña:</label>
                 <input type="text" name="password" value="<?php echo $this->agentes->password ?>" required>
             </p>
             <p>
-                <label for="role">rol</label><br>
+                <label for="role">Rol de usuario:</label>
                 <input type="text" name="role" value="<?php echo $this->agentes->role ?>" required>
             </p>
             <p>
-                <label for="nombres">Nombres y Apellidos</label><br>
+                <label for="nombres">Nombres y Apellidos:</label>
                 <input type="text" name="nombres" value="<?php echo $this->agentes->nombres ?>" required>
             </p>
         
 
             <p>
-            <input type="submit" value="Actualizar">
+            <input class="btn btn-primary" type="submit" value="Actualizar">
             </p>
 
         </form>
+            <div class="center alert alert-success" role="alert">
+                <?php echo $this->mensaje; ?>
+            </div>
+    </div>
     </div>
 
   

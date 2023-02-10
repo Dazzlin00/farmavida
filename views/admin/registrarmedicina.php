@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Farmavida</title>
+    
 </head>
 <body>
 <?php include('panel.php');?>
-
-    <div id="main">
-        <h1 class="center">Registrar Medicinas </h1>
-
-        <div class="center"><?php echo $this->mensaje; ?></div>
+    
+    <div id="main" class="container d-flex justify-content-center align-items-center">
+    <div> 
+    <br><h1>Registrar Medicinas </h1><br>
 
         <form action="<?php echo constant('URL'); ?>consulta/registrar" method="POST">
 
@@ -31,12 +31,14 @@
            
 
             <p>
-            <input type="submit" value="Registrar">
+            <input class="btn btn-primary" type="submit" value="Registrar">
             </p>
-
+                <div class="center alert alert-success" role="alert">
+                <?php echo $this->mensaje; ?>
+                </div>
         </form>
     </div>
-
+    </div>
   
 </body>
 </html>
