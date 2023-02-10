@@ -9,25 +9,23 @@ $sucursals = $this->d['sucursals'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo constant('URL'); ?>public/css/login.css">
-    <title>Document</title>
+    <title>Farmavida</title>
 </head>
 
 <body>
     <?php include('panel.php'); ?>
-    <?php $this->showMessages(); ?>
+    <div class="container d-flex justify-content-center align-items-center">
     <div>
-
+        <br><h2>Registro de Usuarios</h2><br>
         <form action="<?php echo constant('URL'); ?>signup/newUser" method="POST">
-            <div></div>
-            <h2>Registro de Usuarios</h2>
-
+        
             <p>
-                <label for="codusuario">Codigo de usuario</label>
+                <label for="codusuario">Código de usuario:</label>
                 <input type="text" name="codusuario" required>
             </p>
 
             <p>
-                <label for="codsucu">Codigo de la Sucursal</label>
+                <label for="codsucu">Código de la Sucursal:</label>
                 <select style="width:125px" name="codsucu" class="custom-select">
                     <option value="">Seleccione</option>
                     <?php
@@ -42,22 +40,27 @@ $sucursals = $this->d['sucursals'];
 
 
             <p>
-                <label for="username">Nombre de usuario</label>
+                <label for="username">Nombre de usuario: </label>
                 <input type="text" name="username" id="username">
             </p>
             <p>
-                <label for="password">Contraseña</label>
+                <label for="password">Contraseña: </label>
                 <input type="text" name="password" id="password">
             </p>
             <p>
-                <label for="nombres">Nombres y Apellidos</label>
+                <label for="nombres">Nombres y Apellidos: </label>
                 <input type="text" name="nombres" id="nombres">
             </p>
             <p>
-                <input type="submit" value="Registrar" />
+                <input class="btn btn-primary" type="submit" value="Registrar" />
             </p>
 
         </form>
+        
+            <div class="center alert alert-success" role="alert">
+            <?php $this->showMessages(); ?>
+            </div>
+    </div>
     </div>
 </body>
 

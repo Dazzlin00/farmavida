@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-01-2023 a las 00:04:32
+-- Tiempo de generación: 10-02-2023 a las 02:48:48
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -24,34 +24,113 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Estructura de tabla para la tabla `medicina`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` enum('user','admin') NOT NULL,
-  `budget` float(10,2) NOT NULL,
-  `photo` varchar(300) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
+DROP TABLE IF EXISTS `medicina`;
+CREATE TABLE IF NOT EXISTS `medicina` (
+  `codMedicina` int NOT NULL,
+  `nombre` varchar(255) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `cantidad` int NOT NULL,
+  PRIMARY KEY (`codMedicina`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `medicina`
+--
+
+INSERT INTO `medicina` (`codMedicina`, `nombre`, `cantidad`) VALUES
+(22222, 'Albendazol', 300),
+(3333, 'aspi', 215),
+(11111, 'Loratadinas', 910);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sucursal`
+--
+
+DROP TABLE IF EXISTS `sucursal`;
+CREATE TABLE IF NOT EXISTS `sucursal` (
+  `codSucursal` varchar(50) NOT NULL,
+  `estado` varchar(255) NOT NULL,
+  `ciudad` varchar(255) NOT NULL,
+  `direccion` varchar(255) NOT NULL,
+  `estatus` varchar(1) NOT NULL,
+  PRIMARY KEY (`codSucursal`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `sucursal`
+--
+
+INSERT INTO `sucursal` (`codSucursal`, `estado`, `ciudad`, `direccion`, `estatus`) VALUES
+('sucursal_0', 'Lara', 'Barquisimeto', 'carrera 25', 'A'),
+('sucursal_1', 'lara', 'barquisimeto', 'obelisco', 'A'),
+('sucursal_2', 'caracas', 'caracas', 'petare', ''),
+('sucursal_3', 'merida', 'merida', 'tucani', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sucursal_medicina`
+--
+
+DROP TABLE IF EXISTS `sucursal_medicina`;
+CREATE TABLE IF NOT EXISTS `sucursal_medicina` (
+  `codMedicina` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `codSucursal` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `cantidad` int NOT NULL,
+  `estatus` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  KEY `codMedicina` (`codMedicina`),
+  KEY `codSucursal` (`codSucursal`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `sucursal_medicina`
+--
+
+INSERT INTO `sucursal_medicina` (`codMedicina`, `codSucursal`, `cantidad`, `estatus`) VALUES
+('0', 'sucursal_0', 1, ''),
+('0', 'sucursal_0', 1, ''),
+('0', 'sucursal_0', 1, ''),
+('11111', 'sucursal_2', 410, ''),
+('', '', 0, ''),
+('3333', 'sucursal_2', 215, ''),
+('22222', 'sucursal_0', 200, ''),
+('0', 'Sucursal_4', 100, ''),
+('22222', 'sucursal_1', 100, ''),
+('11111', 'sucursal_0', 500, ''),
+('99999', 'sucursal_0', 100, ''),
+('99999', 'Sucursal_4', 100, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `codusuario` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `codsucu` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `role` enum('user','admin') CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `nombres` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
+  PRIMARY KEY (`codusuario`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `users`
+-- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role`, `budget`, `photo`, `name`) VALUES
-(5, 'marcos', '$2y$10$0aOmd1LTFHtBLCEtDrJgy.xxs7FArnOlzHXLrviwP85LWS.XbxsNO', 'user', 100.00, 'd8eb8c58160f13143d4c6ef11c34b57a.png', 'Marcos Rivas'),
-(6, 'lena', '$2y$10$C/MX.IRvzrNuMyo4pk5uU.bCD20hSWChoCM1bp4n3kEzO2TYamSI.', 'user', 16000.00, '', 'Lenis'),
-(7, 'omar', '$2y$10$2YzZ9yzk2rSLbcbfBGkcIuWZ1HzjcNT8lTcgeidTiYbq2yzcNVxuq', 'user', 20000.00, '', 'El Pozos'),
-(8, 'eliza', '$2y$10$GVNJoZxFDjPHbqhtPLFm5evb/xexXZmFz2oshB27yALd7jHUtXnjC', 'admin', 0.00, '', ''),
-(9, 'eliza2', '$2y$10$xtJXWC2D1ktES5OR/uZDvuyggvvIytTWGK2SUa5T68Pg7UF.qxoOe', 'user', 0.00, '', ''),
-(10, 'eliza3', '1234', 'user', 0.00, '', ''),
-(11, '2', '$2y$10$QzQORebnf3BoZ9lXTU17sObw.hMf0s5ed4NX4tGdAoiI5YgdnFUAe', 'user', 0.00, '', '');
+INSERT INTO `usuario` (`codusuario`, `codsucu`, `username`, `password`, `role`, `nombres`) VALUES
+('user1', 'sucursal_1', 'Eliza', '1', 'admin', 'Eliza Graterol'),
+('user2', 'sucursal_2', 'jesus', '1', 'user', 'Jesus Lopez'),
+('user-3', 'sucursal_3', 'dazz', '1', 'user', 'Eliza'),
+('user_4', 'sucursal_2', 'kley', '1', 'user', 'Jose alvarez');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
