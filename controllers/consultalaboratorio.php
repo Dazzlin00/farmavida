@@ -155,19 +155,17 @@ class ConsultaLaboratorio extends SessionController
 
             $this->view->medicina = $medicina;
 
-            $this->view->mensaje = "Actualizacion realizada correctamente";
+           // $this->view->mensaje = "Actualizacion realizada correctamente";
+           $mensaje = "Actualizacion realizada correctamente";
 
-            $this->view->render("admin/registroexitoso", [
-
-                'laboratorios' => $this->getListLaboratorios()
-
-            ]);
+          
         } else {
-            $this->view->mensaje = "No se pudo actualizar ";
+            $mensaje = "No se pudo Actualizadar correctamente";
+         
 
         }
-
-
+        $this->render();
+        echo $mensaje;
 
     }
     function eliminar($param = null)
@@ -175,7 +173,7 @@ class ConsultaLaboratorio extends SessionController
         $codMedicina = $param[0];
 
         if ($this->model->delete($codMedicina)) {
-            $this->model->deletesucursal($codMedicina);
+          
 
             $mensaje = "Medicina eliminada correctamente";
         } else {

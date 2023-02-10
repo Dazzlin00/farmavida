@@ -1,3 +1,7 @@
+<?php
+ $user                   = $this->d['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,7 @@
     <?php include('panel.php');?>
     <div id="admi">
         
-        <h1>ADMINISTRADOR</h1>
+        <h1>Bienvenido: <?php echo $user->getNombres() ?></h1>
        
 
     </div>

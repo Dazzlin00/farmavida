@@ -187,12 +187,10 @@ class ConsultaLaboratorioModel extends Model
     public function delete($cod)
     {
 
-        $query = $this->db->connect()->prepare('DELETE FROM medicina   WHERE codMedicina = :cod');
+        $query = $this->db->connect()->prepare('DELETE FROM laboratorio_medicina   WHERE codMedicina = :cod');
         try {
             $query->execute([
                 'cod' => $cod,
-
-
             ]);
             return true;
         } catch (PDOException $e) {
