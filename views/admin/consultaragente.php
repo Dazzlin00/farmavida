@@ -102,7 +102,7 @@ $agentes = $this->d['agentes'];
                 </tr>
 
               <?php } ?>
-              <a class="btn btn-primary" href="<?php echo constant('URL') .'signup/' ; ?>">Registrar</a><br>
+              <a class="btn btn-primary" href="<?php echo constant('URL') .'signup/' ; ?>">Registrar agente </a><br>
               <div><br></div>
             </tbody>
           </table>

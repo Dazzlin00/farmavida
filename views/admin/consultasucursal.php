@@ -47,7 +47,6 @@
               <?php
               include_once 'models/sucursal.php';
               // Recorrer los resultados y agregarlos a la tabla
-              
               foreach ($this->sucursal as $row) {
                 $sucursals = new Sucursal();
                 $sucursals = $row;
@@ -97,8 +96,8 @@
 
               <?php } ?>
 
-              
-              <a class="btn btn-primary" href="<?php echo constant('URL') .'sucursals/pantallaregistro/' ; ?>">Registrar</a>
+              <div><br></div>
+              <a class="btn btn-primary" href="<?php echo constant('URL') .'sucursals/pantallaregistro/' ; ?>">Registrar sucursal </a>
               <div><br></div>
 
 

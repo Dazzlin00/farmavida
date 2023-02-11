@@ -31,7 +31,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
 
-              <a class="btn btn-primary" href="<?php echo constant('URL') .'consultalaboratorio/pantallaregistro/' ; ?>"> Registrar </a>
+              <a class="btn btn-primary" href="<?php echo constant('URL') .'consultalaboratorio/pantallaregistro/' ; ?>"> Registrar Laboratorio</a>
               <a class="btn btn-primary" href="<?php echo constant('URL') .'consultalaboratorio/pantallaregistroporlaboratorio/' ; ?>"> Registrar medicinas </a>
               <div><br></div>
           <table class="table table-bordered table-hover">

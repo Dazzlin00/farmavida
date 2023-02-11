@@ -54,7 +54,7 @@
         <a class="nav-link" href="<?php echo constant('URL');?>admin">Inicio</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="<?php echo constant('URL'); ?>consultalaboratorio">Medicinas por Laboratorio</a>
+      <a class="nav-link" href="<?php echo constant('URL'); ?>consultalaboratorio">Laboratorio</a>
       </li>
 
       <li class="nav-item">

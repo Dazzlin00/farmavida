@@ -29,8 +29,8 @@
     <form action="" method="post">
       <div class="panel panel-default">
         <div class="panel-body ">
-              <a class="btn btn-primary" href="<?php echo constant('URL') .'consulta/pantallaregistro/' ; ?>"> Registrar </a>
-              <a class="btn btn-primary" href="<?php echo constant('URL') .'consulta/pantallaregistroporSucursal/' ; ?>"> Suministrar </a>
+              <a class="btn btn-primary" href="<?php echo constant('URL') .'consulta/pantallaregistro/' ; ?>"> Registrar medicina </a>
+              <a class="btn btn-primary" href="<?php echo constant('URL') .'consulta/pantallaregistroporSucursal/' ; ?>"> Suministrar inventario </a>
               <div><br></div>
 
           <table class="table table-bordered table-hover dt-responsive nowrap">
