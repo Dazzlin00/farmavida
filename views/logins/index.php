@@ -45,7 +45,7 @@
                 <?php $this->showMessages();?>
                 <div id="login-main">
                     <form action="<?php echo constant('URL'); ?>logins/authenticate" method="POST">
-                        <div class="text-danger"><?php (isset($this->errorMessage))?  $this->errorMessage : '' ?></div>
+                        <div class="text-danger "><?php (isset($this->errorMessage))?  $this->errorMessage : '' ?></div>
                         <h2 class="text-center mb-4">Bienvenidos </h2>
                         <div class="center-img">
                         <img src="views\images\7.png" alt="70" width="170"/>
