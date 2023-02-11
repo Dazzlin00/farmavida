@@ -12,6 +12,9 @@
     table {
       background-color: white;
     }
+    .barra {
+   background-color: black;
+    }
     </style>
 </head>
 
@@ -28,9 +31,10 @@
         <div class="panel-body ">
               <a class="btn btn-primary" href="<?php echo constant('URL') .'consulta/pantallaregistro/' ; ?>"> Registrar </a>
               <a class="btn btn-primary" href="<?php echo constant('URL') .'consulta/pantallaregistroporSucursal/' ; ?>"> Suministrar </a>
+              <div><br></div>
 
-          <table class="table table-bordered ">
-            <thead>
+          <table class="table table-bordered table-hover dt-responsive nowrap">
+            <thead class="barra text-white" >
               <tr align="center">
                 <th>Código de la medicina</th>
                 <th>Nombre</th>

@@ -30,6 +30,7 @@
 
             <p>
             <input class="btn btn-primary" type="submit" value="Actualizar">
+            <td><a class="btn btn-secondary" href="<?php echo constant('URL'); ?>consulta">Cancelar</a></td>
             </p>
 
         </form>

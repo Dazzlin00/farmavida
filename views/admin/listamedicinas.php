@@ -4,7 +4,14 @@ $user = $this->d['user'];
 $sucursals = $this->d['sucursals'];
 
 ?>
-
+    <style>
+    table {
+      background-color: white;
+    }
+    .barra {
+   background-color: black;
+    }
+    </style>
     <?php require_once 'panel.php'; ?>
 
     <div id="main-container">
@@ -30,9 +37,9 @@ $sucursals = $this->d['sucursals'];
                 </div>   
             </div>
             
-            <div id="table-container">
+            <div id="table-container" class="table table-bordered ">
                 <table width="100%" cellpadding="0">
-                    <thead>
+                    <thead class="barra text-white">
                         <tr>
                         <th data-sort="codMedicina" width="35%">Codigo de la medicina</th>
                         <th data-sort="codSucursal" width="35%">Codigo de la Sucursal</th>

@@ -17,16 +17,18 @@
         <form action="<?php echo constant('URL'); ?>consulta/registrar" method="POST">
 
             <p>
-                <label for="codMedicina">Codigo de la Medicina</label><br>
+                <label for="codMedicina">Código de la Medicina: </label><br>
                 <input type="text" name="codMedicina"   required>
             </p>
             <p>
-                <label for="nombre">Nombre</label><br>
+                <label for="nombre">Nombre: </label><br>
                 <input type="text" name="nombre"   required>
             </p>
            
             <p>
             <input class="btn btn-primary" type="submit" value="Registrar">
+            <td><a class="btn btn-secondary" href="<?php echo constant('URL'); ?>consulta">Cancelar</a></td>
+
             </p>
                 <div class="center alert alert-success" role="alert">
                 <?php echo $this->mensaje; ?>

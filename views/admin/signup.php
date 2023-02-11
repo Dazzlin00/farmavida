@@ -53,6 +53,7 @@ $sucursals = $this->d['sucursals'];
             </p>
             <p>
                 <input class="btn btn-primary" type="submit" value="Registrar" />
+                <td><a class="btn btn-secondary" href="<?php echo constant('URL'); ?>usuario">Cancelar</a></td>
             </p>
 
         </form>

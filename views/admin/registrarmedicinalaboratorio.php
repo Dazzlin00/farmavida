@@ -16,10 +16,9 @@ $laboratorios = $this->d['laboratorios'];
 <body>
 <?php include('panel.php');?>
 
-    <div id="main">
-        <h1 class="center">Registro de Medicinas por Laboratorio</h1>
-
-        <div class="center"><?php echo $this->mensaje; ?></div>
+    <div id="main" class="container d-flex justify-content-center align-items-center">
+    <div>
+        <br><h1>Registro de Medicinas por Laboratorio</h1><br>
 
         <form action="<?php echo constant('URL'); ?>consultalaboratorio/registrarmedicinaslaboratorio" method="POST">
 
@@ -55,10 +54,15 @@ $laboratorios = $this->d['laboratorios'];
             
 
             <p>
-            <input type="submit" value="Registrar">
+            <input class="btn btn-primary" type="submit" value="Registrar">
+            <td><a class="btn btn-secondary" href="<?php echo constant('URL'); ?>consultalaboratorio">Cancelar</a></td>
             </p>
 
         </form>
+            <div class="center alert alert-success" role="alert">
+                <?php echo $this->mensaje; ?>
+            </div>
+    </div>
     </div>
 
   

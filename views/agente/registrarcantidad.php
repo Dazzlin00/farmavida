@@ -9,8 +9,9 @@
 <body>
 <?php include('panel.php');?>
 
-    <div id="main">
-        <h1 class="center">Detalle de <?php echo $this->medicinas->codigomedicina ?></h1>
+    <div id="main" class="container d-flex justify-content-center align-items-center">
+    <div>
+            <br><h1>Datos de medicina: <?php echo $this->medicinas->codigomedicina ?></h1><br>
 
         <div class="center"><?php echo $this->mensaje; ?></div>
 
@@ -35,10 +36,12 @@
             </p>
 
             <p>
-            <input type="submit" value="Actualizar">
+            <input class="btn btn-primary" type="submit" value="Actualizar">
+            <td><a class="btn btn-secondary" href="<?php echo constant('URL'); ?>sucursalmedicina">Cancelar</a></td>
             </p>
 
         </form>
+    </div>
     </div>
 
   

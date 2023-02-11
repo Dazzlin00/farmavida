@@ -15,6 +15,9 @@ $agentes = $this->d['agentes'];
   table {
     background-color: white;
   }
+  .barra {
+   background-color: black;
+    }
 </style>
 </head>
 
@@ -30,8 +33,8 @@ $agentes = $this->d['agentes'];
 
       <div class="panel panel-default">
         <div class="panel-body">
-          <table class="table table-bordered table-responsive">
-            <thead>
+          <table class="table table-bordered table-hover">
+            <thead class="barra text-white">
               <tr>
                 <th>Código de Usuario</th>
                 <th>Codigo de la sucursal</th>
@@ -100,7 +103,7 @@ $agentes = $this->d['agentes'];
 
               <?php } ?>
               <a class="btn btn-primary" href="<?php echo constant('URL') .'signup/' ; ?>">Registrar</a><br>
-              
+              <div><br></div>
             </tbody>
           </table>
         </div>

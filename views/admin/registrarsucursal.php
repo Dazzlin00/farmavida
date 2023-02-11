@@ -34,6 +34,7 @@
 
             <p>
             <input class="btn btn-primary" type="submit" value="Registrar">
+            <td><a class="btn btn-secondary" href="<?php echo constant('URL'); ?>sucursals">Cancelar</a></td>
             </p>
 
         </form>
