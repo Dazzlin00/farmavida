@@ -78,27 +78,8 @@ $agentes = $this->d['agentes'];
                   </td>
              
                   <td><a class="btn btn-success" href="<?php echo constant('URL') . 'usuario/verAgente/' . $agente['agente']->getCod(); ?>">Actualizar</a></td>
-                  <td><a class="btn btn-danger text-white" data-toggle="modal" data-target="#confirmModal">Eliminar</a></td>
-                                      <!-- Modal de confirmación -->
-                                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                              ¿Está seguro de que desea eliminar a este agente?
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                              <a class="btn btn-danger" href="<?php echo constant('URL') . 'usuario/delete/' . $agente['agente']->getCod(); ?>">Eliminar</a>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
+                  <td><a class="btn btn-danger" href="<?php echo constant('URL') . 'usuario/delete/' . $agente['agente']->getCod(); ?>">Eliminar</a></td>
+                                      
                 </tr>
 
               <?php } ?>
