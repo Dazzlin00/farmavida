@@ -16,12 +16,7 @@ class Agente extends SessionController{
     }
 
 
-    function buscaragente()
-    {
-        $agente = new AgentesModel();
-        $veragente = $agente->getById($this->user->getCod());
-
-    }
+ 
 
     
 
