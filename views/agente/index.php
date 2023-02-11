@@ -15,7 +15,7 @@
     <?php $this->showMessages();?>
     <div id="Agente">
         
-        <h1>AGENTE <?php echo $user->getNombres() ?></h1>
+        <h1>Agente: <?php echo $user->getNombres() ?></h1>
     </div>
 </body>
 </html>

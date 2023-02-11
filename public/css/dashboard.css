@@ -12,10 +12,12 @@ h2 {
 }
 
 #dashboard-container {
-  display: grid;
+  display: flex;
   grid-template-columns: 65% 35%;
   grid-template-rows: 100%;
-  align-items: center
+  align-items: center;
+  
+  justify-content:center;
 }
 #left-container {
   width: 100%;

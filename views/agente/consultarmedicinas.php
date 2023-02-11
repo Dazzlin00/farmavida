@@ -18,7 +18,7 @@ $medicinas = $this->d['medicinas'];
 <body>
 
   <?php include('panel.php'); ?>
-  <h1>AGENTE
+  <h1>Agente:
     <?php echo $user->getNombres() ?>
   </h1>
   
@@ -38,7 +38,7 @@ $medicinas = $this->d['medicinas'];
             <thead>
               <tr>
                 <th>Código de la medicina</th>              
-
+                <th>Nombre de la medicina</th> 
                 <th>Cantidad</th>
 
 
@@ -60,7 +60,9 @@ $medicinas = $this->d['medicinas'];
                   <td >
                   <?php echo $medicina['medicina']->getcodmedicina() ?>
                   </td>
-                 
+                  <td >
+                  <?php echo $medicina['medicina']->getnombre() ?>
+                  </td>
                   <td >
                   <?php echo $medicina['medicina']->getcantidad() ?>
                   </td>
