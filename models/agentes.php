@@ -1,5 +1,5 @@
 <?php
-
+//CLASE PLANTILLA 
 class Agentes
 {
     public $codusuario;

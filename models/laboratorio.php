@@ -1,5 +1,5 @@
 <?php
-
+//CLASE PLANTILLA USADA EN CONSULTALABORATORIO
 class Laboratorio
 {
     public $codMedicina;

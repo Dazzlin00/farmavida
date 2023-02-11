@@ -1,6 +1,8 @@
 <?php
 include_once 'models/Laboratorio.php';
 include_once 'listamedicinamodel.php';
+
+//CLASE MODELO DE CONSULTALABORATORIO
 class ConsultaLaboratorioModel extends Model
 {
     private $codMedicina;
@@ -11,10 +13,7 @@ class ConsultaLaboratorioModel extends Model
     {
         parent::__construct();
     }
-
-
-    
-
+//MUESTRA LISTAS 
     public function getAll_lista(){
         $items = [];
         try{
@@ -38,25 +37,8 @@ class ConsultaLaboratorioModel extends Model
         }
     }
 
-    
 
-
-    public function setcodMedicina($codMedicina)
-    {
-        $this->codMedicina = $codMedicina;
-    }
-    public function getcodMedicina()
-    {
-        return $this->codMedicina;
-    }
-    public function setcodlab($codlab)
-    {
-        $this->codlab = $codlab;
-    }
-    public function getcodlab()
-    {
-        return $this->codlab;
-    }
+     //MUESTRA TODOS LAS MEDICINAS
 
     public function getAllMedicina(){
         $items = [];
@@ -77,6 +59,7 @@ class ConsultaLaboratorioModel extends Model
             echo $e;
         }
     }
+    //MUESTRA TODOS LOS LABORATORIOS
     public function getAllLaboratorio(){
         $items = [];
 
@@ -103,15 +86,7 @@ class ConsultaLaboratorioModel extends Model
        
        
     }
-
- 
-
-
-
-    
-   
-    
-    
+    //INSERTA
     public function insert($datos){
         // insertar
         $query = $this->db->connect()->prepare('INSERT INTO laboratorio (codlab, nombrelab) VALUES(:codlab, :nombrelab)');
@@ -127,6 +102,7 @@ class ConsultaLaboratorioModel extends Model
         }
         
     }
+    //REGISTRA LAS MEDICINAS POR LABORATORIO
     public function registrarmedicinaslaboratorio($datos){
         // insertar
         $query = $this->db->connect()->prepare('INSERT INTO laboratorio_medicina (codMedicina, codlab) VALUES(:codMedicina, :codlab)');
@@ -145,7 +121,7 @@ class ConsultaLaboratorioModel extends Model
         
     }
    
-    
+    //BUSCA 
     public function getById($codMedicina)
     {
         $item = new Laboratorio();
@@ -184,6 +160,7 @@ class ConsultaLaboratorioModel extends Model
             return false;
         }
     }
+    //ELIMINA EL LABORATORIO
     public function delete($cod)
     {
 
@@ -198,6 +175,7 @@ class ConsultaLaboratorioModel extends Model
             return false;
         }
     }
+    //ELIMINA LA SUCURSAL
     public function deletesucursal($cod)
     {
 
@@ -215,6 +193,23 @@ class ConsultaLaboratorioModel extends Model
         }
     }
 
+    //SETTERS AND GETTERS
+    public function setcodMedicina($codMedicina)
+    {
+        $this->codMedicina = $codMedicina;
+    }
+    public function getcodMedicina()
+    {
+        return $this->codMedicina;
+    }
+    public function setcodlab($codlab)
+    {
+        $this->codlab = $codlab;
+    }
+    public function getcodlab()
+    {
+        return $this->codlab;
+    }
 
 
 }

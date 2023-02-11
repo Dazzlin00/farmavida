@@ -1,5 +1,6 @@
 <?php
 include_once 'agentes.php';
+//MODELO DE USUARIO
 class UsuarioModel extends Model implements IModel
 {
 
@@ -27,7 +28,7 @@ class UsuarioModel extends Model implements IModel
 
     }
 
-
+    //BUSCA
     public function getAll()
     {
         $items = [];
@@ -48,7 +49,7 @@ class UsuarioModel extends Model implements IModel
             echo $e;
         }
     }
-
+    //BUSCA
     public function getById($codusuario)
     {
         $item = new Agentes();
@@ -73,46 +74,50 @@ class UsuarioModel extends Model implements IModel
         }
 
     }
+    //ACTUALIZA
+    public function update($item)
+    {
 
-    public function update($item){
-       
         $query = $this->db->connect()->prepare('UPDATE usuario SET username = :username,password = :password,nombres = :nombres WHERE codusuario = :codusuario');
-        try{  $query->execute([
-            'codusuario' => $item['codusuario'],
-           
-            'username' => $item['username'],
-            'password' => $item['password'],
-           
-            'nombres' => $item['nombres']
-           
-         
-            ]);
-        return true;
-    }catch(PDOException $e){
-        echo $e;
-        return false;
-    }
-}
-    public function actualizar(){
-        try{
-            $query = $this->prepare('UPDATE usuario SET codsucu = :codsucu, username = :username, password = :password, nombres = :nombres WHERE codusuario = :codusuario');
+        try {
             $query->execute([
-                'codusuario'        => $this->codusuario,
-                'codsucu' => $this->codsucursal, 
-                'username' => $this->username,
-                'password' => $this->password,
-                'nombres' => $this->nombres
-                
-                ]);
+                'codusuario' => $item['codusuario'],
+
+                'username' => $item['username'],
+                'password' => $item['password'],
+
+                'nombres' => $item['nombres']
+
+
+            ]);
             return true;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e;
             return false;
         }
     }
-  
+    //ACTUALIZA
+    public function actualizar()
+    {
+        try {
+            $query = $this->prepare('UPDATE usuario SET codsucu = :codsucu, username = :username, password = :password, nombres = :nombres WHERE codusuario = :codusuario');
+            $query->execute([
+                'codusuario' => $this->codusuario,
+                'codsucu' => $this->codsucursal,
+                'username' => $this->username,
+                'password' => $this->password,
+                'nombres' => $this->nombres
+
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+    }
 
 
+    //COMPARA CONTRASENNAS
     function comparePasswords($current, $userid)
     {
         try {
@@ -127,7 +132,7 @@ class UsuarioModel extends Model implements IModel
             return NULL;
         }
     }
-
+    //INSERTA
 
     public function save()
     {
@@ -150,7 +155,7 @@ class UsuarioModel extends Model implements IModel
         }
     }
 
-
+    //BUSCA
 
     public function get($codusuario)
     {
@@ -173,7 +178,7 @@ class UsuarioModel extends Model implements IModel
             return false;
         }
     }
-
+    //ELIMINA
     public function delete($cod)
     {
         try {
@@ -186,7 +191,7 @@ class UsuarioModel extends Model implements IModel
         }
     }
 
-
+    //BUSCA
     public function existsCod($codusuario)
     {
         try {
@@ -241,7 +246,7 @@ class UsuarioModel extends Model implements IModel
     {
         $this->username = $username;
     }
-    //FIXME: validar si se requiere el parametro de hash
+
     public function setPassword($password, $hash = true)
     {
         if ($hash) {
@@ -250,6 +255,8 @@ class UsuarioModel extends Model implements IModel
             $this->password = $password;
         }
     }
+
+    //SETTERS AND GETTERS
     public function setCod($codusuario)
     {
         $this->codusuario = $codusuario;

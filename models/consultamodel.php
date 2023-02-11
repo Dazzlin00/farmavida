@@ -1,6 +1,7 @@
 <?php
 include_once 'models/medicina.php';
 include_once 'listamedicinamodel.php';
+//MODELO QUE CONTROLA LAS MEDICINAS
 class ConsultaModel extends Model
 {
     private $codigo;
@@ -13,61 +14,56 @@ class ConsultaModel extends Model
         parent::__construct();
     }
 
-    public function setcodMedicina($codigo)
-    {
-        $this->codigo = $codigo;
-    }
-    public function getcodMedicina()
-    {
-        return $this->codigo;
-    }
 
-    public function getAllMedicina(){
+    //MUESTRA TODAS LAS MEDICINAS
+    public function getAllMedicina()
+    {
         $items = [];
 
-        try{
+        try {
             $query = $this->query('SELECT * FROM medicina ');
 
-            while($p = $query->fetch(PDO::FETCH_ASSOC)){
+            while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
                 $item = new ConsultaModel();
-                $item->from($p); 
-                
+                $item->from($p);
+
                 array_push($items, $item);
             }
 
             return $items;
 
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e;
         }
     }
-    
-    public function from($array){
-      
+
+    public function from($array)
+    {
+
         $this->codigo = $array['codMedicina'];
-       
-       
+
+
     }
+    //ACTUALIZA INVENTARIO
 
- 
+    public function actualizarinventario($item)
+    {
 
-
-
-    public function actualizarinventario($item){
-       
         $query = $this->db->connect()->prepare('UPDATE medicina SET cantidad = cantidad-:cantidad  WHERE codMedicina = :codMedicina');
-        try{  $query->execute([
-            'codMedicina' => $item['codMedicina'],
-            'cantidad'   => $item['cantidad'],
-           
-         
+        try {
+            $query->execute([
+                'codMedicina' => $item['codMedicina'],
+                'cantidad' => $item['cantidad'],
+
+
             ]);
-        return true;
-    }catch(PDOException $e){
-        echo $e;
-        return false;
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
     }
-    }
+    //ACTUALIZA EL INVENTARIO
     public function Sumarinventario($item)
     {
 
@@ -85,41 +81,45 @@ class ConsultaModel extends Model
             return false;
         }
     }
-    
-    
-    public function insert($datos){
+
+    //INSERTA
+    public function insert($datos)
+    {
         // insertar
         $query = $this->db->connect()->prepare('INSERT INTO medicina (codMedicina, nombre, cantidad) VALUES(:codMedicina, :nombre, 0)');
-        try{
+        try {
             $query->execute([
                 'codMedicina' => $datos['codMedicina'],
                 'nombre' => $datos['nombre'],
-               // 'cantidad' => $datos['cantidad']
-               
+                // 'cantidad' => $datos['cantidad']
+
             ]);
             return true;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             return false;
         }
-        
+
     }
-    public function registrarmedicinassucursal($datos){
+    //INSERTA
+    public function registrarmedicinassucursal($datos)
+    {
         // insertar
         $query = $this->db->connect()->prepare('INSERT INTO sucursal_medicina (codMedicina, codSucursal, cantidad) VALUES(:codMedicina, :codSucursal,:cantidad)');
-        try{
+        try {
             $query->execute([
                 'codMedicina' => $datos['codMedicina'],
                 'codSucursal' => $datos['codSucursal'],
                 'cantidad' => $datos['cantidad'],
                 //'cantidad' => $datos['0']
-               
+
             ]);
             return true;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             return false;
         }
-        
+
     }
+    //BUSCA
     public function get()
     {
         $items = [];
@@ -132,25 +132,15 @@ class ConsultaModel extends Model
                 $item->codigo = $row['codMedicina'];
                 $item->nombre = $row['nombre'];
                 $item->cantidad = $row['cantidad'];
-
-
-
-
-
-
-
                 array_push($items, $item);
             }
             return $items;
 
-
         } catch (PDOException $e) {
             echo $e;
         }
-
-
     }
-   
+    //BUSCA
     public function getById($codMedicina)
     {
         $item = new Medicina();
@@ -171,21 +161,25 @@ class ConsultaModel extends Model
         }
 
     }
-    public function update($item){
-       
-            $query = $this->db->connect()->prepare('UPDATE medicina SET nombre = :nombre  WHERE codMedicina = :codMedicina');
-            try{  $query->execute([
+    //ACTUALIZA
+    public function update($item)
+    {
+
+        $query = $this->db->connect()->prepare('UPDATE medicina SET nombre = :nombre  WHERE codMedicina = :codMedicina');
+        try {
+            $query->execute([
                 'codMedicina' => $item['codMedicina'],
                 'nombre' => $item['nombre'],
                 //'cantidad'   => $item['cantidad']
-             
-                ]);
+
+            ]);
             return true;
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e;
             return false;
         }
     }
+    //ELIMINA
     public function delete($cod)
     {
 
@@ -202,6 +196,7 @@ class ConsultaModel extends Model
             return false;
         }
     }
+    //ELIMINA
     public function deletesucursal($cod)
     {
 
@@ -218,7 +213,15 @@ class ConsultaModel extends Model
             return false;
         }
     }
-
+    // SET Y GET
+    public function setcodMedicina($codigo)
+    {
+        $this->codigo = $codigo;
+    }
+    public function getcodMedicina()
+    {
+        return $this->codigo;
+    }
 
 
 }

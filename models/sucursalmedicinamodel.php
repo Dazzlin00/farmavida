@@ -1,14 +1,14 @@
 <?php
 include_once 'models/medicinas.php';
-//include_once 'models/listamedicinamodel.php';
 
+//CLASE MODELO DE SUCURSALMEDICINA
 class SucursalMedicinaModel extends Model
 {
     private $codigomedicina;
     private $codigosucursal;
 
-    private $nombres;   
-  private $cantidad;
+    private $nombres;
+    private $cantidad;
 
 
 
@@ -20,15 +20,16 @@ class SucursalMedicinaModel extends Model
         $this->codigosucursal = '';
         $this->cantidad = '';
     }
-
-    public function getAll($userid){
+    //MUESTRA LISTAS
+    public function getAll($userid)
+    {
         $items = [];
-        try{
+        try {
             $query = $this->prepare('SELECT sucursal_medicina.codSucursal,sucursal_medicina.codMedicina,nombre,sucursal_medicina.cantidad FROM sucursal_medicina INNER JOIN usuario ON codSucursal = usuario.codsucu INNER JOIN medicina ON medicina.codMedicina = sucursal_medicina.codMedicina AND usuario.codusuario =:userid ORDER BY codMedicina');
             $query->execute(["userid" => $userid]);
 
 
-            while($p = $query->fetch(PDO::FETCH_ASSOC)){
+            while ($p = $query->fetch(PDO::FETCH_ASSOC)) {
                 $item = new SucursalMedicinaModel();
                 $item->from($p);
                 array_push($items, $item);
@@ -36,15 +37,14 @@ class SucursalMedicinaModel extends Model
 
             return $items;
 
-        }catch(PDOException $e){
+        } catch (PDOException $e) {
             echo $e;
         }
     }
-    
 
+    //ACTUALIZA
     public function actualizarinventario($item)
     {
-
         $query = $this->db->connect()->prepare('UPDATE medicina SET cantidad = cantidad+:cantidad  WHERE codMedicina = :codMedicina');
         try {
             $query->execute([
@@ -60,9 +60,10 @@ class SucursalMedicinaModel extends Model
         }
 
     }
+    //ACTUALIZA
     public function actualizarinventario2($item)
     {
-        
+
         $query = $this->db->connect()->prepare('UPDATE sucursal_medicina SET cantidad = :cantidad WHERE  codSucursal = :codSucursal and codMedicina = :codMedicina');
         try {
             $query->execute([
@@ -78,24 +79,28 @@ class SucursalMedicinaModel extends Model
             return false;
         }
     }
-public function actualizarinventario3($item){
-       
-    $query = $this->db->connect()->prepare('UPDATE sucursal_medicina SET cantidad = SUM(cantidad) + :cantidad  WHERE  codSucursal = :codSucursal and codMedicina = :codMedicina');
-    try{  $query->execute([
-        'codMedicina' => $item['codMedicina'],
-        'codSucursal' => $item['codSucursal'],
-        'cantidad'   => $item['cantidad']
-       
-     
-        ]);
-    return true;
-}catch(PDOException $e){
-    echo $e;
-    return false;
-}
+    //ACTUALIZA
+    public function actualizarinventario3($item)
+    {
+
+        $query = $this->db->connect()->prepare('UPDATE sucursal_medicina SET cantidad = SUM(cantidad) + :cantidad  WHERE  codSucursal = :codSucursal and codMedicina = :codMedicina');
+        try {
+            $query->execute([
+                'codMedicina' => $item['codMedicina'],
+                'codSucursal' => $item['codSucursal'],
+                'cantidad' => $item['cantidad']
 
 
-}
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+            return false;
+        }
+
+
+    }
+    //BUSCA
     public function getcod($codigosucursal)
     {
         try {
@@ -110,14 +115,15 @@ public function actualizarinventario3($item){
             return false;
         }
     }
-    public function from($array){
+    public function from($array)
+    {
         $this->codigomedicina = $array['codMedicina'];
         $this->codigosucursal = $array['codSucursal'];
         $this->nombres = $array['nombre'];
         $this->cantidad = $array['cantidad'];
-       
-    }
 
+    }
+//BUSCA
     public function get()
     {
         $items = [];
@@ -131,13 +137,6 @@ public function actualizarinventario3($item){
                 $item->codigomedicina = $row['codMedicina'];
                 $item->codigosucursal = $row['codSucursal'];
                 $item->cantidad = $row['cantidad'];
-
-
-
-
-
-
-
                 array_push($items, $item);
             }
             return $items;
@@ -149,15 +148,16 @@ public function actualizarinventario3($item){
 
 
     }
-    public function getById2($codMedicina,$codigosucursal)
+    //BUSCA
+    public function getById2($codMedicina, $codigosucursal)
     {
         $item = new SucursalMedicinaModel();
 
         $query = $this->db->connect()->prepare('SELECT sucursal_medicina.codMedicina,nombre,sucursal_medicina.cantidad  FROM sucursal_medicina INNER JOIN medicina  WHERE medicina.codMedicina = sucursal_medicina.codMedicina AND medicina.codMedicina = :codMedicina AND sucursal_medicina.codSucursal = :codSucursal ORDER BY medicina.codMedicina');
 
         try {
-            $query->execute(['codMedicina' => $codMedicina,'codSucursal' => $codigosucursal]);
-           
+            $query->execute(['codMedicina' => $codMedicina, 'codSucursal' => $codigosucursal]);
+
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $item->codigomedicina = $row['codMedicina'];
@@ -172,16 +172,16 @@ public function actualizarinventario3($item){
         }
 
     }
-
-    public function getById($codMedicina,$codigosucursal)
+//BUSCA
+    public function getById($codMedicina, $codigosucursal)
     {
         $item = new Medicinas();
 
         $query = $this->db->connect()->prepare('SELECT * FROM sucursal_medicina WHERE codSucursal=:codSucursal AND codMedicina = :codMedicina');
 
         try {
-            $query->execute(['codMedicina' => $codMedicina,'codSucursal' => $codigosucursal]);
-           
+            $query->execute(['codMedicina' => $codMedicina, 'codSucursal' => $codigosucursal]);
+
             while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
                 $item->codigomedicina = $row['codMedicina'];
@@ -195,10 +195,8 @@ public function actualizarinventario3($item){
         }
 
     }
-    
 
-
-   
+//ACTUALIZA
     public function update($item)
     {
 
@@ -216,7 +214,7 @@ public function actualizarinventario3($item){
             return false;
         }
     }
-
+//ELIMINA
 
     public function delete($cod)
     {
@@ -234,7 +232,7 @@ public function actualizarinventario3($item){
             return false;
         }
     }
-
+//SETTERS AND GETTERS
     public function setcodmedicina($codigomedicina)
     {
         $this->codigomedicina = $codigomedicina;

@@ -1,5 +1,5 @@
 <?php
-
+//MODELO DE LONGINS
 class LoginsModel extends Model{
 
     public function __construct(){

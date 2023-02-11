@@ -1,6 +1,7 @@
 <?php
 //include_once 'SucursalMedicinaModel.php';
 include_once 'lista.php';
+//MODELO DE LISTAMEDICINA
 class ListaMedicinaModel extends Model{
 
     private $codMedicina;
@@ -13,13 +14,11 @@ class ListaMedicinaModel extends Model{
         parent::__construct();
     }
 
-    
+    //BUSCA
     public function buscar(){
         $items = [];
         try{
             $query = $this->db->connect()->query('SELECT medicina.codMedicina,codSucursal,nombre,sucursal_medicina.cantidad   FROM medicina  INNER JOIN sucursal_medicina  WHERE medicina.codMedicina = sucursal_medicina.codMedicina   ORDER BY medicina.codMedicina');
-           
-
 
             while($p = $query->fetch(PDO::FETCH_ASSOC)){
                 $item = new ListaMedicinaModel();
@@ -33,6 +32,7 @@ class ListaMedicinaModel extends Model{
             echo $e;
         }
     }
+     //BUSCA
     public function getById($codMedicina)
     {
         $item = new Lista();
@@ -54,6 +54,7 @@ class ListaMedicinaModel extends Model{
         }
 
     }
+     //ACTUALIZA
 public function actualizarinventario($item){
        
         $query = $this->db->connect()->prepare('UPDATE medicina SET cantidad = cantidad - :cantidad  WHERE codMedicina = :codMedicina');
@@ -69,7 +70,7 @@ public function actualizarinventario($item){
         return false;
     }
     }
-
+ //MUESTRA TODAS LAS SUCURSALES
     public function getAllSucursal(){
         $items = [];
 
@@ -89,6 +90,7 @@ public function actualizarinventario($item){
             echo $e;
         }
     }
+     //MUESTRA TODAS LAS SUCURSALES CON CONDICION
     public function getAll($codsucu){
         $items = [];
         try{
@@ -108,7 +110,7 @@ public function actualizarinventario($item){
             echo $e;
         }
     }
-
+     //MUESTRA TODAS LAS SUCURSALES CON CONDICION
     public function getAllSucursalMedicina($codsucu){
         $items = [];
 
@@ -128,13 +130,13 @@ public function actualizarinventario($item){
             echo $e;
         }
     }
-    
     public function from($array){
       
         $this->codigosucursal = $array['codSucursal'];
        
        
     }
+         //MUESTRA LISTAS
     public function getAll_lista(){
         $items = [];
         try{
@@ -176,7 +178,7 @@ public function actualizarinventario($item){
         $this->cantidad = $array['cantidad'];
        
     }
-
+//ELIMINA
     public function delete($cod)
     {
 
@@ -194,7 +196,7 @@ public function actualizarinventario($item){
             return false;
         }
     }
-
+//SETTERS AND GETTERS
     public function setcodMedicina($codMedicina)
     {
         $this->codMedicina = $codMedicina;

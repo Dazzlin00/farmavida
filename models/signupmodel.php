@@ -6,10 +6,6 @@ class SignupModel extends Model
     
     private $codigosucursal;
 
-   
-
-
-
     public function __construct()
     {
         parent::__construct();
@@ -18,7 +14,7 @@ class SignupModel extends Model
         $this->codigosucursal = '';
      
     }
-
+//MUESTRA LISTAS
     public function getAll(){
         $items = [];
 
@@ -42,14 +38,8 @@ class SignupModel extends Model
     public function from($array){
       
         $this->codigosucursal = $array['codSucursal'];
-       
-       
     }
-
-    
-    
-    
-    
+//SETS Y GETS
     public function setcodigosucursal($codigosucursal)
     {
         $this->codigosucursal = $codigosucursal;
