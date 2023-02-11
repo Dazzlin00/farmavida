@@ -1,5 +1,5 @@
 <?php
-
+// CONTROLA A LOS USUARIOS
 class Usuario extends SessionController
 {
     private $user;
@@ -9,17 +9,16 @@ class Usuario extends SessionController
         $this->user = $this->getUserSessionData();
         $this->view->agentes = [];
     }
-
+//MUESTRA LA VISTA CONSULTAR AGENTE
     function render()
     {
-       // $medicinas = $this->model->get();
-        //$this->view->medicina = $medicinas;
+       
         $this->view->render('admin/consultaragente', [
           
             'agentes' => $this->getListAgentes()
         ]);
     }
-  
+  //MUESTRA LA LISTA DE AGENTES
     private function getListAgentes(){
         $res = [];
         $usuariomodel = new UsuarioModel();
@@ -37,12 +36,10 @@ class Usuario extends SessionController
 
         return $res;
     }
-
+//MUESTRA EN OTRA VENTANA LA PANTALLA DE ACTUALIZACION
 
     function verAgente($param = null)
     {
-        
-        // var_dump($param);
         $codusuario = $param[0];
         $agentes = $this->model->getById($codusuario);
 
@@ -51,7 +48,7 @@ class Usuario extends SessionController
         $this->view->mensaje = "";
         $this->view->render('admin/actualizarAgente');
     }
-
+//ACTUALIZA
     function actualizar()
     {
         $codusuario = $_POST['codusuario'];
@@ -62,9 +59,8 @@ class Usuario extends SessionController
        
         $nombres = $_POST['nombres'];
 
-
         if ($this->model->update(['codusuario' => $codusuario, 'codsucu' => $codsucursal, 'username' => $username, 'password' => $password, 'role' => $role, 'nombres' => $nombres])) {
-            // actualizar alumno exito
+            
             $agentes = new Agentes();
             $agentes->codusuario = $codusuario;
             $agentes->codsucursal = $codsucursal;
@@ -85,9 +81,8 @@ class Usuario extends SessionController
         }
 
     }
-    
 
-
+//ELIMINA
     function delete($params){
         
         if($params === NULL) $this->redirect('usuario', ['error' => Errors::ERROR_ADMIN_NEWCATEGORY_EXISTS]);

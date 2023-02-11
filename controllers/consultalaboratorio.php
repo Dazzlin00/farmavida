@@ -1,5 +1,5 @@
 <?php
-
+//NUEVA ENTIDAD LABORATORIO
 class ConsultaLaboratorio extends SessionController
 {
 
@@ -168,6 +168,8 @@ class ConsultaLaboratorio extends SessionController
         echo $mensaje;
 
     }
+
+    //ELIMINA
     function eliminar($param = null)
     {
         $codMedicina = $param[0];

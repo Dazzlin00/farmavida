@@ -1,5 +1,5 @@
 <?php
-
+//CONTROLA LAS MEDICINAS
 class Consulta extends SessionController
 {
 
@@ -13,24 +13,24 @@ class Consulta extends SessionController
 
         $this->view->medicina = [];
     }
-
+          //MUESTRA LAS VISTAS
     function render()
     {
 
-        //$medicinas = $this->model->get();
+       //MUESTRA EL LISTADO
         $medicinas = $this->model->get();
         $this->view->medicina = $medicinas;
         $this->view->render('admin/consulta', [
             'user' => $this->user,
             'medicinas' => $this->getListMedicinas(),
             'sucursals' => $this->getListSucursal()
-            //'medicinas' => $this->getListMedicinas()
+           
         ]);
     }
 
 
 
-
+//MUESTRA EN OTRA VENTANA LA PAGINA DE REGISTRO
     function pantallaregistroporSucursal()
     {
         $this->view->mensaje = "";
@@ -41,6 +41,8 @@ class Consulta extends SessionController
             //'medicinas' => $this->getListMedicinas()
         ]);
     }
+
+    //METODO QUE REGISTRA LAS MEDICINAS EN UNA SUCURSAL
     function registrarmedicinassucursal()
     {
 
@@ -48,11 +50,8 @@ class Consulta extends SessionController
         $codSucursal = $_POST['codSucursal'];
         $cantidad = $_POST['cantidad'];
 
-
-
         if ($this->model->registrarmedicinassucursal(['codMedicina' => $codigo, 'codSucursal' => $codSucursal, 'cantidad' => $cantidad])) {
 
-            // $this->model->actualizarinventario(['codMedicina' => $codigo,'cantidad' => $cantidad]);
             $this->model->Sumarinventario(['codMedicina' => $codigo, 'cantidad' => $cantidad]);
 
             $this->view->mensaje = "Medicina Registrada correctamente";
@@ -61,7 +60,7 @@ class Consulta extends SessionController
 
                 'medicinas' => $this->getListMedicinas(),
                 'sucursals' => $this->getListSucursal()
-                //'medicinas' => $this->getListMedicinas()
+               
             ]);
         } else {
             $this->view->mensaje = "La Medicina ya está registrada";
@@ -69,11 +68,11 @@ class Consulta extends SessionController
 
                 'medicinas' => $this->getListMedicinas(),
                 'sucursals' => $this->getListSucursal()
-                //'medicinas' => $this->getListMedicinas()
+                
             ]);
         }
     }
-
+ //MUESTRA EN UN COMBOBOX LA LISTA DE MEDICINAS EXISTENTES
     private function getListMedicinas()
     {
         $res = [];
@@ -88,21 +87,8 @@ class Consulta extends SessionController
         return $res;
     }
 
-    private function getLista()
-    {
-        $res = [];
-
-        $medicinamodel = new ConsultaModel();
-        $medicinas = $medicinamodel->gettotal($this->$medicinamodel->getcodMedicina());
-
-        foreach ($medicinas as $medicina) {
-            array_push($res, $medicina->getcodMedicina());
-        }
-        $res = array_values(array_unique($res));
-
-        return $res;
-    }
-
+    
+ //MUESTRA EN UN COMBOBOX LA LISTA DE SUCURSALES EXISTENTES
 
     private function getListSucursal()
     {
@@ -117,6 +103,7 @@ class Consulta extends SessionController
 
         return $res;
     }
+    //MUESTRA EN UN COMBOBOX LA LISTA DE SUCURSALES EXISTENTES POR SUCURSAL
     private function getListMedicinaporSucursal()
     {
         $res = [];
@@ -134,25 +121,19 @@ class Consulta extends SessionController
         return $res;
     }
 
-
+  //ABRE EN OTRA VENTANA LA PANTALLA DE REGISTRO
     function pantallaregistro()
     {
         $this->view->mensaje = "";
         $this->view->render('admin/registrarmedicina');
     }
+    //REGISTRA MEDICINAS
     function registrar()
     {
-
-        $codigo = $_POST['codMedicina'].$_POST['codLaboratorio'];
+        $codigo = $_POST['codMedicina'];
         $nombre = $_POST['nombre'];
-        $codlaboratorio = $_POST['codLaboratorio'];
-       
-        $codigo .= $codlaboratorio ;
-        // $cantidad  = $_POST['cantidad'];
 
-
-        if ($this->model->insert(['codMedicina' => $codigo.$codlaboratorio, 'nombre' => $nombre, 'cantidad' => 0])) {
-
+        if ($this->model->insert(['codMedicina' => $codigo, 'nombre' => $nombre, 'cantidad' => 0])) {
 
             $this->view->mensaje = "Medicina Registrada correctamente";
 
@@ -176,22 +157,17 @@ class Consulta extends SessionController
         $this->view->mensaje = "";
         $this->view->render('admin/detalle');
     }
-
+//ACTUALIZA EL NOMBRE DE LA MEDICINA
     function actualizarMedicina()
     {
         $codigo = $_POST['codMedicina'];
         $nombre = $_POST['nombre'];
-        // $cantidad  = $_POST['cantidad'];
-
-
         if ($this->model->update(['codMedicina' => $codigo, 'nombre' => $nombre])) {
-            // actualizar alumno exito
+          
             $medicina = new Medicina();
             $medicina->codigo = $codigo;
             $medicina->nombre = $nombre;
-            // $medicina->cantidad = $cantidad;
-
-
+           
             $this->view->medicina = $medicina;
 
             $this->view->mensaje = "Medicina actualizada correctamente";
@@ -205,6 +181,8 @@ class Consulta extends SessionController
 
 
     }
+
+    //ELIMINA
     function eliminar($param = null)
     {
         $codMedicina = $param[0];

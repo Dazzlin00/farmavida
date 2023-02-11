@@ -1,6 +1,6 @@
 <?php
 
-
+//REGISTRO DE NUEVOS USUARIOS
 class Signup extends SessionController
 {
 
@@ -8,7 +8,7 @@ class Signup extends SessionController
     {
         parent::__construct();
     }
-
+//MUESTRA LAS VISTAS
     function render()
     {
         $this->view->errorMessage = '';
@@ -16,6 +16,7 @@ class Signup extends SessionController
             'sucursals' => $this->getListSucursal()
         ]);
     }
+    //MUESTRA EN UN COMBOBOX LAS SUCURSALES
     private function getListSucursal(){
         $res = [];
         $signupsucursal = new SignupModel();
@@ -30,7 +31,7 @@ class Signup extends SessionController
     }
 
      
-
+//REGISTRA NUEVOS USUARIOS
 
     function newUser()
     {

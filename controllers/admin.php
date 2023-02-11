@@ -1,5 +1,5 @@
 <?php
-
+//DASHBOARD DE EL ADMINISTRADOR
 class Admin extends SessionController{
     private $user;
     function __construct(){
@@ -7,7 +7,7 @@ class Admin extends SessionController{
         $this->user = $this->getUserSessionData();
 
     }
-
+//SE ENCARGA DE MOSTRAR LAS VISTAS
     function render(){
         $stats = $this->getStatistics();
         
@@ -18,7 +18,7 @@ class Admin extends SessionController{
     }
 
 
-
+//MUESTRA LAS ESTADISTICAS EN EL ADMI
     private function getStatistics(){
         $res = [];
 

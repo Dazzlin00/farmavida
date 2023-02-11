@@ -6,6 +6,8 @@ class Errores extends Controller{
         parent::__construct();
         $this->view->render('errores/index');
     }
+
+    //ERROR 404
 }
 
 ?>

@@ -1,6 +1,6 @@
 
 <?php
-
+//DASHBOARD DE EL AGENTE
 class Agente extends SessionController{
  private $user;
     function __construct(){

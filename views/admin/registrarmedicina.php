@@ -21,15 +21,10 @@
                 <input type="text" name="codMedicina"   required>
             </p>
             <p>
-                <label for="codLaboratorio">Codigo de Laboratorio</label><br>
-                <input type="text" name="codLaboratorio"   required>
-            </p>
-            <p>
                 <label for="nombre">Nombre</label><br>
                 <input type="text" name="nombre"   required>
             </p>
            
-
             <p>
             <input class="btn btn-primary" type="submit" value="Registrar">
             </p>

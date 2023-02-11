@@ -1,6 +1,6 @@
 
 <?php
-
+//CERRAR SESSION
 class Logout extends SessionController{
 
     function __construct(){

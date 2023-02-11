@@ -1,4 +1,5 @@
 <?php
+//VISTA QUE ES CONTROLADA POR EL AGENTE
 class SucursalMedicina extends SessionController
 {
     private $user;
@@ -9,34 +10,30 @@ class SucursalMedicina extends SessionController
         $this->user = $this->getUserSessionData();
         $this->view->medicinas = [];
     }
-
+//MUESTRA LAS VISTAS
     function render()
     { 
-        
-        //$medicina = $this->model->get();
-        //$this->view->medicinas = $medicina;
-        
         $this->view->render('agente/consultarmedicinas', [
             'user'                 => $this->user,
             'medicinas' => $this->getListSucursal()
         ]);
     }
 
-
+//MUESTRA LA LISTA DE MEDICINAS QUE PERTENECEN A LA SUCURSAL DEL AGENTE
     private function getListSucursal(){
         $res = [];
         $sucursalmedicinamodel = new SucursalMedicinaModel();
         $medicinas = $sucursalmedicinamodel->getAll($this->user->getCod());
 
         foreach ($medicinas as $medicina) {
-          //  array_push($res, $medicina->getcodmedicina());
+        
           $sucursalArray = [];
           $sucursalArray['medicina'] = $medicina;
          
           array_push($res, $sucursalArray);
 
         }
-      //  $res = array_values(array_unique($res));
+     
 
         return $res;
     }
@@ -45,7 +42,7 @@ class SucursalMedicina extends SessionController
     //MUESTRA EN OTRA VENTANA LOS DATOS DE LA MEDICINA SELECCIONADA
     function verMedicina($param = null)
     {
-        // var_dump($param);
+        
         $codmedicina = $param[0];
         $codsucu = $this->user->getcodsucursal();
         $medicinas = $this->model->getById($codmedicina,$codsucu);
@@ -56,11 +53,9 @@ class SucursalMedicina extends SessionController
         $this->view->render('agente/registrarcantidad');
     }
 
-   
 
 
-
-
+//ACTUALIZA LA MEDICINA SOLO ESTA PERMITIDO CAMBIAR LA CANTIDAD
     function actualizarMedicina()
     {
         $codigomedicina = $_POST['codMedicina'];
@@ -76,16 +71,10 @@ class SucursalMedicina extends SessionController
             $medicinas->codigosucursal = $codigosucursal;
             $medicinas->cantidad = $cantidad;
            
-          
             $this->view->medicinas = $medicinas;
-         
-         
 
             $this->model->actualizarinventario(['codMedicina' => $codigomedicina,'cantidad' => $cantidad2]);
            
-
-          
-
             $this->view->mensaje = "Cantidad actualizada correctamente";
 
             $this->view->render('agente/registrarcantidad');
@@ -94,12 +83,9 @@ class SucursalMedicina extends SessionController
 
         }
 
-
-
-
     }
 
-
+//ELIMINA
     function eliminar($param = null)
     {
         $codMedicina = $param[0];
